@@ -9,6 +9,16 @@ const getRandomDogSrc = async(name) => {
 
 }
 
+async function getWikiString(breed){
+    let url = "https://en.wikipedia.org/api/rest_v1/page/summary/" + breed;
+
+    const res = await fetch (url)
+
+    const data = await res.json()
+
+    return data.extract
+}
+
 const loadElement = (title, content, imgSrc) => {
     const wikiItemHolder = document.getElementById("wikiItems")
 
@@ -46,27 +56,12 @@ const loadElement = (title, content, imgSrc) => {
 
 }
 
-async function getWikiString(breed){
-    let url = "https://en.wikipedia.org/api/rest_v1/page/summary/" + breed;
-
-    const res = await fetch (url)
-
-    const data = await res.json()
-
-    return data.extract
-}
-
-async function loadDog(breed){
-    loadElement(breed, await getWikiString(breed),await getRandomDogSrc(breed))
-
-}
-
 async function loadPage(){
-    await loadDog("hound")
-    await loadDog("pyrenees")
-    await loadDog("newfoundland")
-    await loadDog("kuvasz")
-    await loadDog("bluetick")
+    loadElement("hound", await getWikiString("hound"),await getRandomDogSrc("hound"))
+    loadElement("pyrenees", await getWikiString("pyrenees"),await getRandomDogSrc("pyrenees"))
+    loadElement("newfoundland", await getWikiString("honewfoundlandund"),await getRandomDogSrc("newfoundland"))
+    loadElement("kuvasz", await getWikiString("kuvasz"),await getRandomDogSrc("kuvasz"))
+    loadElement("bluetick", await getWikiString("bluetick"),await getRandomDogSrc("bluetick"))
 }
 
 loadPage()
