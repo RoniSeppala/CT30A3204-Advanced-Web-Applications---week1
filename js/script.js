@@ -17,7 +17,7 @@ const loadElement = (title, content, imgSrc) => {
     
     wikiHeaderElement = document.createElement("h1")
     wikiHeaderElement.className = "wiki-header"
-    wikiHeaderElement.innerText = title
+    wikiHeaderElement.innerText = title.toUpperCase()
     wikiItemDiv.appendChild(wikiHeaderElement)
 
     wikiContentDiv = document.createElement("div")
@@ -52,8 +52,18 @@ const loadElement = (title, content, imgSrc) => {
 
 }
 
+async function getWikiString(breed){
+    let url = "https://en.wikipedia.org/api/rest_v1/page/summary/" + breed;
+
+    const res = await fetch (url)
+
+    const data = await res.json()
+
+    return data.extract
+}
+
 async function loadDog(breed){
-    loadElement(breed,"testContent",await getRandomDogSrc(breed))
+    loadElement(breed, await getWikiString(breed),await getRandomDogSrc(breed))
 
 }
 
