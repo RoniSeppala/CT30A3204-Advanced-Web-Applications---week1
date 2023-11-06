@@ -18,9 +18,11 @@ const loadElement = (title, content, imgSrc) => {
     wikiContentDiv.appendChild(wikiTextElement)
 
     wikiImageDiv = document.createElement("div")
+    wikiImageDiv.className = "img-container"
     wikiContentDiv.appendChild(wikiImageDiv)
 
     wikiImage = document.createElement("img")
+    wikiImage.className = "wiki-img"
     wikiImage.src = imgSrc
 
     wikiImageDiv.appendChild(wikiImage)
