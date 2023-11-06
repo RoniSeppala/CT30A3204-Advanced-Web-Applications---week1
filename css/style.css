@@ -1,0 +1,13 @@
+.wiki-img {
+    width: 100%;
+}
+
+.wiki-item {
+    margin-right: 10px;
+    margin-left: 10px;
+    box-shadow: 3px 3px 10px 5px gray;
+}
+
+.wiki-content {
+    padding: 5px;
+}

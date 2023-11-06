@@ -25,7 +25,6 @@ const loadElement = (title, content, imgSrc) => {
 
     wikiTextElement = document.createElement("p")
     wikiTextElement.innerText = content
-    wikiContentDiv.appendChild(wikiTextElement)
 
     wikiImageDiv = document.createElement("div")
     wikiImageDiv.className = "img-container"
@@ -34,6 +33,9 @@ const loadElement = (title, content, imgSrc) => {
     wikiImage = document.createElement("img")
     wikiImage.className = "wiki-img"
     wikiImage.src = imgSrc
+
+    
+    wikiContentDiv.appendChild(wikiTextElement)
 
     wikiImageDiv.appendChild(wikiImage)
 
@@ -49,12 +51,17 @@ const loadElement = (title, content, imgSrc) => {
 
 }
 
+async function loadDog(breed){
+    loadElement(breed,"testContent",await getRandomDogSrc(breed))
+
+}
+
 async function loadPage(){
-    loadElement("hound","testContent",await getRandomDogSrc("hound"))
-    loadElement("pyrenees","testContent",await getRandomDogSrc("pyrenees"))
-    loadElement("newfoundland","testContent",await getRandomDogSrc("newfoundland"))
-    loadElement("kuvasz","testContent",await getRandomDogSrc("kuvasz"))
-    loadElement("bluetick","testContent",await getRandomDogSrc("bluetick"))
+    await loadDog("hound")
+    await loadDog("pyrenees")
+    await loadDog("newfoundland")
+    await loadDog("kuvasz")
+    await loadDog("bluetick")
 }
 
 loadPage()
