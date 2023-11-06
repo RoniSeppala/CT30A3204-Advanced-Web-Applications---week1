@@ -42,12 +42,6 @@ const loadElement = (title, content, imgSrc) => {
 
     wikiItemDiv.appendChild(wikiContentDiv)
 
-
-
-
-
-
-
     wikiItemHolder.appendChild(wikiItemDiv)
 
 }
