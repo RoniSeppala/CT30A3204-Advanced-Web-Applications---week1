@@ -25,6 +25,7 @@ const loadElement = (title, content, imgSrc) => {
 
     wikiTextElement = document.createElement("p")
     wikiTextElement.innerText = content
+    wikiTextElement.className = "wiki-text"
 
     wikiImageDiv = document.createElement("div")
     wikiImageDiv.className = "img-container"
