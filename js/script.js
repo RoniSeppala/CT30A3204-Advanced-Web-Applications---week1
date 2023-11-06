@@ -1,3 +1,13 @@
+const getRandomDogSrc = async(name) => {
+    let url = "https://dog.ceo/api/breed/" + name + "/images/random"
+
+    const res = await fetch(url)
+
+    const data = await res.json()
+
+    return(data.message)
+
+}
 
 const loadElement = (title, content, imgSrc) => {
     const wikiItemHolder = document.getElementById("wikiItems")
@@ -39,8 +49,12 @@ const loadElement = (title, content, imgSrc) => {
 
 }
 
-loadElement("TestTitle","testContent","https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Taka_Shiba.jpg/220px-Taka_Shiba.jpg")
-loadElement("TestTitle","testContent","https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Taka_Shiba.jpg/220px-Taka_Shiba.jpg")
-loadElement("TestTitle","testContent","https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Taka_Shiba.jpg/220px-Taka_Shiba.jpg")
-loadElement("TestTitle","testContent","https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Taka_Shiba.jpg/220px-Taka_Shiba.jpg")
-loadElement("TestTitle","testContent","https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Taka_Shiba.jpg/220px-Taka_Shiba.jpg")
+async function loadPage(){
+    loadElement("hound","testContent",await getRandomDogSrc("hound"))
+    loadElement("pyrenees","testContent",await getRandomDogSrc("pyrenees"))
+    loadElement("newfoundland","testContent",await getRandomDogSrc("newfoundland"))
+    loadElement("kuvasz","testContent",await getRandomDogSrc("kuvasz"))
+    loadElement("bluetick","testContent",await getRandomDogSrc("bluetick"))
+}
+
+loadPage()
